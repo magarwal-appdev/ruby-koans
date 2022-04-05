@@ -31,6 +31,28 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 def score(dice)
   # You need to write this method
+  score = 0
+  
+  dice.uniq.each do |each_number|
+    count_of_this_number = dice.count(each_number)
+
+    # for set of threes ---
+    if count_of_this_number/3.0 > 0 && each_number != 1
+      score += (count_of_this_number/3)*each_number*100
+    elsif count_of_this_number/3.0 > 0 && each_number == 1
+      score += (count_of_this_number/3)*1000
+    end
+
+    # for NOT set of threes ---
+    if count_of_this_number%3 != 0 && each_number == 1
+      score += (count_of_this_number%3)*100
+    elsif count_of_this_number%3 != 0 && each_number == 5
+      score += (count_of_this_number%3)*50
+    end
+
+  end
+
+  return score
 end
 
 class AboutScoringProject < Neo::Koan
