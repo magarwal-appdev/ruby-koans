@@ -52,3 +52,4 @@ class AboutToStr < Neo::Koan
     assert_equal true,  acts_like_a_string?(CanBeTreatedAsString.new)
   end
 end
+
